@@ -4,11 +4,7 @@
   </div>
   <div class="body">
     <h1>Input your height and weight. </h1>
-    <%= form_for :user do |f| %>
-    <%= f.text_field :height %>
-    <%= f.text_field :weight %>
-    <%= f.submit("What's my gender?") %>
-    <% end %>
+    <%= render 'form' %>
   </div>
 
   <div class="gender">

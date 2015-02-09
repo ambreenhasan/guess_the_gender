@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
+    @user = User.new
     # create a new user
     #if the height and weight dimensions already exist, display male or female
     # if not, create a new record and at random display male or female and save to the database

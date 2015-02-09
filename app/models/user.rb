@@ -8,3 +8,4 @@ class User < ActiveRecord::Base
   validates :height, inclusion: {in: 48..96}
   validates :weight, inclusion: {in: 50..700}
 end
+

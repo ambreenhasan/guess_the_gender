@@ -6,3 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+gender = ["Male", "Female"]
+
+10.times do
+  User.create(gender: gender.sample, height: rand(48..96), weight: rand(50..700))
+end

@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   get 'users/gender/new' => 'users#new'
 
-  post 'users/create' => 'users#create'
+  get 'users/guess'
+  post 'users/guess' => 'users#guess'
 
 
 

@@ -1,27 +1,35 @@
 class UsersController < ApplicationController
   def index
-    # @user = User.all
+    @users = User.all
+    @user = User.new
   end
 
   def new
     @user = User.new
   end
 
-  def create
-    @user = User.new(user_params)
+  def guess
+    @user = User.new
+    if User.where(user_params).present?
+      @user = User.where(user_params).first
+       # redirect_to users_guess_path
+    # elsif !User.exists?(height: params[:height], weight: params[:weight])
+    #   gender = ["Male", "Female"]
+    #   @user = User.new(height: params[:height], weight: params[:weight], gender: gender.sample)
 
-    if @user.save && @user.exists?(height: params[:height], weight: params[:weight])
-      @user.where(height: params[:height], weight: params[:weight]).first
-    elsif @user.save && !@user.exists?(height: params[:height], weight: params[:weight])
-      gender = ["Male", "Female"]
-      @user.create(height: params[:height], weight: params[:weight], gender: gender.sample)
+    #   p @user
+    #    redirect_to root_path if @user.save
+
     end
-   redirect_to root_path
+  end
+
+  def update_guess
+
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:height, :weight)
+    params.fetch(:user, {}).permit(:height, :weight)
   end
 end

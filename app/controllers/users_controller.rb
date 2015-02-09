@@ -11,8 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save && @user.exists?(height: params[:height], weight: params[:weight])
-      @user.where(:height: params[:height], weight: params[:weight]).first
-      render
+      @user.where(height: params[:height], weight: params[:weight]).first
     elsif @user.save && !@user.exists?(height: params[:height], weight: params[:weight])
       gender = ["Male", "Female"]
       @user.create(height: params[:height], weight: params[:weight], gender: gender.sample)

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       gender = ["Male", "Female"]
       @user.create(height: params[:height], weight: params[:weight], gender: gender.sample)
     end
-    # redirect_to root_path
+   redirect_to root_path
   end
 
   private

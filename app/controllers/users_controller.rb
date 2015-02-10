@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     @user = User.new
     if User.where(user_params).present?
       @user = User.where(user_params).first
-       # redirect_to users_guess_path
     # elsif !User.exists?(height: params[:height], weight: params[:weight])
     #   gender = ["Male", "Female"]
     #   @user = User.new(height: params[:height], weight: params[:weight], gender: gender.sample)
@@ -23,7 +22,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_guess
+  def correct_guess
+    redirect_to root_path
+
+  end
+
+  def incorrect_guess
+    #update the database
 
   end
 

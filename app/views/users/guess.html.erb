@@ -1,4 +1,7 @@
 <p>Based on statistically accurate data, I think you are..</p>
 <%= @user.gender %>
 
+<p>Is this correct?</p>
+<%= button_to "Yes", {action: 'correct_guess'} %>
+<%= button_to "No", {action: 'incorrect_guess'} %>
 

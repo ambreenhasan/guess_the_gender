@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   get 'users/guess'
   post 'users/guess' => 'users#guess'
 
+  get 'users/correct_guess' => 'users#correct_guess'
+  post 'users/correct_guess'
+
+  get 'users/incorrect_guess' => 'users#incorrect_guess'
+  post 'users/incorrect_guess'
+
 
 
   # Example of regular route:

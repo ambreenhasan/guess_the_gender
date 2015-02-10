@@ -4,8 +4,8 @@ RSpec.describe UsersController, :type => :controller do
 
     context "#guess" do
       it "retreives User data if height and weight already exists" do
-        expect { get :guess, :user => FactoryGirl.attributes_for(:user)
-        }.to_not change {User.count}
+        @user = FactoryGirl.create(:user)
+        expect(User.where(:id => @user.id, :gender => @user.gender, :height => @user.height, :weight => @user.weight)).to exist
       end
 
       it "creates a new User with height and weight if query doesn't exist" do

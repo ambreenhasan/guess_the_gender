@@ -5,7 +5,7 @@ RSpec.describe UsersController, :type => :controller do
   describe "UsersController" do
     context "#guess" do
       it "returns gender if height and weight already exist" do
-        post :
+
       end
 
       it "creates a new User with height and weight if query doesn't exist" do

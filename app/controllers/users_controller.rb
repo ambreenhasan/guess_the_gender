@@ -9,17 +9,22 @@ class UsersController < ApplicationController
   end
 
   def guess
+    @user = User.new
     if User.where(user_params).present?
       @user = User.where(user_params).first
-    else
+    elsif !(User.where(user_params).present?)
       gender = ["Male", "Female"]
-      @user = User.new(gender: gender.sample, height: params[:height], weight: params[:weight])
+      p params
+      puts "hello inside else if statement"
+      @user = User.new(user_params)
+      p @user
       redirect_to users_guess_path if @user.save
     end
   end
 
   def correct_guess
-    redirect_to root_path
+    @user = User.find(params[:id])
+     redirect_to root_path if @user.update_attributes(gender: params[:gender])
   end
 
   def incorrect_guess
@@ -36,6 +41,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.fetch(:user, {}).permit(:height, :weight)
+    params.fetch(:user, {}).permit(:gender,:height, :weight)
   end
 end

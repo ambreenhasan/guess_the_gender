@@ -2,6 +2,6 @@
 <%= @user.gender %>
 
 <p>Is this correct?</p>
-<%= button_to "Yes", {action: 'correct_guess'} %>
+<%= button_to "Yes", {action: 'correct_guess', :id => @user.id, :gender => @user.gender} %>
 <%= button_to "No", {action: 'incorrect_guess', :id => @user.id} %>
 

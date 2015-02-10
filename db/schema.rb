@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150207032849) do
   enable_extension "plpgsql"
 
   create_table "users", force: true do |t|
-    t.string   "gender"
+    t.string   "gender",     default: "Male"
     t.integer  "height"
     t.integer  "weight"
     t.datetime "created_at"

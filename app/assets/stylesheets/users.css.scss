@@ -1,3 +1,25 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-group {
+  padding-top: 5%;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.navbar-brand span {
+  color: #5cb85c;
+}
+
+.correct {
+  padding-top: 5%;
+}
+
+.button_to div {
+  display: inline;
+}
+
+ul > li {
+  list-style-type: none;
+}

@@ -1,12 +1,18 @@
-<%= form_for @user, :url => users_guess_path do |f| %>
-  <%= f.text_field :height, :placeholder => "Insert height in inches" %>
-  <%= f.text_field :weight, :placeholder => "Insert weight" %>
-  <%= f.submit("What's my gender?") %>
-<% end %>
+<div class="form-group">
+  <%= form_for @user, :url => users_guess_path do |f| %>
+    <%= f.text_field :height, :placeholder => "Insert height in inches", :class => "form-control" %>
+    <br>
+    <%= f.text_field :weight, :placeholder => "Insert weight", :class => "form-control" %>
+    <br>
+    <br>
+    <%= f.submit "What's my gender?", :class => "btn btn-success" %>
+  <% end %>
+</div>
 
-<% if @user.errors.any? %>
+
+  <% if @user.errors.any? %>
+<div class="alert alert-danger" role="alert">
   <div id="error_explanation">
-    <h2>Program couldn't guess because:</h2>
     <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -14,3 +20,4 @@
     </ul>
   </div>
 <% end %>
+</div>

@@ -24,12 +24,17 @@ class UsersController < ApplicationController
 
   def correct_guess
     redirect_to root_path
-
   end
 
   def incorrect_guess
-    #update the database
+    @user = User.find(params[:id])
 
+    if @user.gender == "Male"
+      @user.update_attributes(gender: "Female")
+    elsif @user.gender == "Female"
+      @user.update_attributes(gender: "Male")
+    end
+    redirect_to root_path
   end
 
   private

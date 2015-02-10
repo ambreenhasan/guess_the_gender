@@ -3,5 +3,5 @@
 
 <p>Is this correct?</p>
 <%= button_to "Yes", {action: 'correct_guess'} %>
-<%= button_to "No", {action: 'incorrect_guess'} %>
+<%= button_to "No", {action: 'incorrect_guess', :id => @user.id} %>
 

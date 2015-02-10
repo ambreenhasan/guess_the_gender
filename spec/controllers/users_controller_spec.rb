@@ -5,7 +5,10 @@ RSpec.describe UsersController, :type => :controller do
   describe "UsersController" do
     context "#guess" do
       it "returns gender if height and weight already exist" do
-
+        expect {
+          post :guess, :user => FactoryGirl.attributes_for(:user)
+          expect(response).to be_redirect
+        }.to_not change {User.count}
       end
 
       it "creates a new User with height and weight if query doesn't exist" do

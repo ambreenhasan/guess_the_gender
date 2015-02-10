@@ -13,11 +13,7 @@ class UsersController < ApplicationController
     if User.where(user_params).present?
       @user = User.where(user_params).first
     elsif !(User.where(user_params).present?)
-      gender = ["Male", "Female"]
-      p params
-      puts "hello inside else if statement"
       @user = User.new(user_params)
-      p @user
       redirect_to users_guess_path if @user.save
     end
   end

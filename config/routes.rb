@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'users/incorrect_guess' => 'users#incorrect_guess'
   post 'users/incorrect_guess'
+  patch 'users/incorrect_guess'
 
 
 

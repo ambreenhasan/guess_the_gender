@@ -5,7 +5,6 @@ RSpec.describe UsersController, :type => :controller do
     context "#guess" do
       it "retreives User data if height and weight already exists" do
         expect { get :guess, :user => FactoryGirl.attributes_for(:user)
-
         }.to_not change {User.count}
       end
 
@@ -18,13 +17,20 @@ RSpec.describe UsersController, :type => :controller do
     end
 
     context "#incorrect_guess" do
-      it "updates the gender attribute if the guess is not correct" do
-      end
 
-      it "updates the gender to Male if incorrect guess was female" do
+      it "updates the gender to Male if incorrect guess was Female" do
+        @user = FactoryGirl.create(:user)
+        @attr = {:gender => "Male"}
+        patch :incorrect_guess, :id => @user.id, :user => @attr
+        @user.reload
+        expect(@user.gender).to eq("Male")
       end
 
       it "updates the gender to Female if incorrect guess was Male" do
+        @user = FactoryGirl.create(:user)
+        @attr = {:gender => "Female"}
+        patch :incorrect_guess, :id => @user.id, :user => @attr
+        expect(@user.gender).to eq("Female")
       end
     end
 

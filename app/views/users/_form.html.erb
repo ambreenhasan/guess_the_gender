@@ -3,3 +3,14 @@
   <%= f.text_field :weight, :placeholder => "Insert weight" %>
   <%= f.submit("What's my gender?") %>
 <% end %>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>Program couldn't guess because:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

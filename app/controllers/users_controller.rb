@@ -14,7 +14,11 @@ class UsersController < ApplicationController
       @user = User.where(user_params).first
     elsif !(User.where(user_params).present?)
       @user = User.new(user_params)
-      redirect_to users_guess_path if @user.save
+        if @user.save
+          redirect_to users_guess_path
+        else
+          render 'index'
+        end
     end
   end
 

@@ -9,16 +9,12 @@ class UsersController < ApplicationController
   end
 
   def guess
-    @user = User.new
     if User.where(user_params).present?
       @user = User.where(user_params).first
-    # elsif !User.exists?(height: params[:height], weight: params[:weight])
-    #   gender = ["Male", "Female"]
-    #   @user = User.new(height: params[:height], weight: params[:weight], gender: gender.sample)
-
-    #   p @user
-    #    redirect_to root_path if @user.save
-
+    else
+      gender = ["Male", "Female"]
+      @user = User.new(gender: gender.sample, height: params[:height], weight: params[:weight])
+      redirect_to users_guess_path if @user.save
     end
   end
 

@@ -1,5 +1,5 @@
 <%= form_for @user, :url => users_guess_path do |f| %>
-  <%= f.text_field :height %>
-  <%= f.text_field :weight %>
+  <%= f.text_field :height, :placeholder => "Insert height in inches" %>
+  <%= f.text_field :weight, :placeholder => "Insert weight" %>
   <%= f.submit("What's my gender?") %>
 <% end %>

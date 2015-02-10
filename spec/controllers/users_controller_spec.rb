@@ -2,16 +2,18 @@ require 'rails_helper'
 
 RSpec.describe UsersController, :type => :controller do
 
-  describe "UsersController" do
     context "#guess" do
-      it "returns gender if height and weight already exist" do
-        expect {
-          post :guess, :user => FactoryGirl.attributes_for(:user)
-          expect(response).to be_redirect
+      it "retreives User data if height and weight already exists" do
+        expect { get :guess, :user => FactoryGirl.attributes_for(:user)
+
         }.to_not change {User.count}
       end
 
       it "creates a new User with height and weight if query doesn't exist" do
+         expect {
+          post :guess, :user => FactoryGirl.attributes_for(:nonexisting_user)
+          expect(response).to be_redirect
+        }.to change {User.count}
       end
     end
 
@@ -28,7 +30,9 @@ RSpec.describe UsersController, :type => :controller do
 
     context "#correct_guess" do
       it "redirects to the root path if the guess is correct" do
+        expect { get :correct_guess, :user => FactoryGirl.attributes_for(:user)
+          expect(response).to be_redirect
+        }
       end
     end
-  end
 end
